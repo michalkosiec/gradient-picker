@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(
+    220deg,
+    #ffdde1,
+    #ffc8dd,
+    #fcd5ce,
+    #d8e2dc,
+    #cdeac0,
+    #a0e7e5,
+    #b4b8f8
+  );
+  background-size: 500% 500%;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#root {
+  width: 90%;
+  margin: 30px 0;
+  height: 80vh;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
