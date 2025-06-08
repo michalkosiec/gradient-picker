@@ -11,8 +11,9 @@ function generateRandomGradient(): string {
   const angle: number = Math.floor(Math.random() * 360);
   const color1: string = getColor();
   const color2: string = getColor();
+  const gradient: string = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
 
-  return `linear-gradient(${angle}deg, ${color1}, ${color2})`;
+  return gradient;
 }
 
 async function copyToClipboard(text: string): Promise<void> {
@@ -26,14 +27,22 @@ async function copyToClipboard(text: string): Promise<void> {
 
 function handleOnClick(
   curGradient: string,
-  setIsClicked: React.Dispatch<React.SetStateAction<boolean>>
+  setIsClicked: React.Dispatch<React.SetStateAction<boolean>>,
+  setSavedGradients: React.Dispatch<React.SetStateAction<string[]>>
 ): void {
   copyToClipboard(curGradient);
   setIsClicked(true);
+  setSavedGradients((savedGradients) => [...savedGradients, curGradient]);
   setTimeout(() => setIsClicked(false), 3000);
 }
 
-export default function GradientElement(): JSX.Element {
+type childProps = {
+  setSavedGradients: React.Dispatch<React.SetStateAction<string[]>>;
+};
+
+export default function GradientElement({
+  setSavedGradients,
+}: childProps): JSX.Element {
   const [isClicked, setIsClicked] = useState(false);
   const [curGradient] = useState(generateRandomGradient());
   return (
@@ -42,7 +51,9 @@ export default function GradientElement(): JSX.Element {
         isClicked ? styles.clicked : ""
       }`}
       style={{ background: curGradient }}
-      onClick={() => handleOnClick(curGradient, setIsClicked)}
+      onClick={() =>
+        handleOnClick(curGradient, setIsClicked, setSavedGradients)
+      }
     ></li>
   );
 }

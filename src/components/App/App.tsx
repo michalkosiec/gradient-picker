@@ -6,13 +6,17 @@ import { useState } from "react";
 
 export default function App(): JSX.Element {
   const [reloadKey, setReloadKey] = useState(0);
+  const [savedGradients, setSavedGradients] = useState<string[]>([]);
   return (
     <div className={styles.app}>
       <h1 className={styles.heading}>Pick your gradient!</h1>
       <main className={styles.mainContainer}>
-        <GradientGrid reloadKey={reloadKey} />
+        <GradientGrid
+          reloadKey={reloadKey}
+          setSavedGradients={setSavedGradients}
+        />
         <ReloadButton setReloadKey={setReloadKey} />
-        <SavedGradients />
+        <SavedGradients savedGradients={savedGradients} />
       </main>
     </div>
   );

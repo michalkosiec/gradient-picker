@@ -1,15 +1,25 @@
 import styles from "./SavedGradients.module.css";
 import SavedGradientElement from "../SavedGradientElement/SavedGradientElement";
 
-export default function SavedGradients(): JSX.Element {
+type childProps = {
+  savedGradients: string[];
+};
+
+export default function SavedGradients({
+  savedGradients,
+}: childProps): JSX.Element {
   return (
     <>
-      <p className={styles.text}>Saved gradients </p>
-      <ul className={styles.savedContainer}>
-        {Array.from({ length: 25 }, (_, i) => i).map((i) => (
-          <SavedGradientElement className={styles.savedElement} key={i} />
-        ))}
-      </ul>
+      <p className={styles.text}>
+        {savedGradients.length > 0 ? `Saved gradients` : ""}
+      </p>
+      <div className={styles.gridWrapper}>
+        <ul className={styles.savedContainer}>
+          {savedGradients.map((gradient, i) => (
+            <SavedGradientElement key={i} gradient={gradient} />
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

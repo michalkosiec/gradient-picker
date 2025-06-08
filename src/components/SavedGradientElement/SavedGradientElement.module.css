@@ -1,9 +1,14 @@
 .savedGradient {
   width: 40px;
   height: 40px;
-  background-color: blue;
   border-radius: 6px;
   list-style: none;
   display: inline-block;
   align-items: start;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.savedGradient:hover {
+  opacity: 0.85;
 }
