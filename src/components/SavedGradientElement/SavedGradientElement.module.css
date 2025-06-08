@@ -1,0 +1,9 @@
+.savedGradient {
+  width: 40px;
+  height: 40px;
+  background-color: blue;
+  border-radius: 6px;
+  list-style: none;
+  display: inline-block;
+  align-items: start;
+}

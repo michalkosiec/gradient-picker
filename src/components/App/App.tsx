@@ -1,6 +1,7 @@
 import styles from "./App.module.css";
 import GradientGrid from "../GradientGrid/GradientGrid.tsx";
 import ReloadButton from "../ReloadButton/ReloadButton.tsx";
+import SavedGradients from "../SavedGradients/SavedGradients.tsx";
 import { useState } from "react";
 
 export default function App(): JSX.Element {
@@ -11,6 +12,7 @@ export default function App(): JSX.Element {
       <main className={styles.mainContainer}>
         <GradientGrid reloadKey={reloadKey} />
         <ReloadButton setReloadKey={setReloadKey} />
+        <SavedGradients />
       </main>
     </div>
   );

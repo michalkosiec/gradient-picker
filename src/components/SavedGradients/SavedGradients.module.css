@@ -1,0 +1,18 @@
+.savedContainer {
+  display: grid;
+  grid-template-columns: repeat(10, 10fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 5px;
+  padding: 0;
+  margin: 12px 0;
+  overflow-y: scroll;
+  height: 200px;
+  grid-auto-flow: row dense;
+}
+
+.text {
+  padding: 0;
+  margin: 0 0 0 12px;
+  align-self: self-start;
+  color: rgb(156, 156, 156);
+}
